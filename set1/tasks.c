@@ -3,7 +3,8 @@
 // Calculates the area of a rectangle
 // Example: calc_area(2, 3) -> 6
 long calc_area(int width, int height) {
-    // TODO
+    long nelio = (long)width * height;
+    return nelio;
 }
 
 // Checks if an integer is odd
