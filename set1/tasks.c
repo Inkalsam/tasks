@@ -42,7 +42,7 @@ long squared_sum(int n) {
 // Example: divide_apples(5) -> 2.5
 // Example: divide_apples(6) -> 3
 double divide_apples(int n) {
-    // TODO
+    return (double)n / 2;
 }
 
 // Calculates rectangle area and perimeter
