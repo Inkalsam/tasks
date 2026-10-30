@@ -78,17 +78,24 @@ int count_steps(int n) {
 // Example: week_day_name(1) -> "Monday"
 // Example: week_day_name(2) -> "Tuesday"
 char* week_day_name(int day) {
-    switch (day) {
-        case 1:return "Monday";
-        case 2:return "Tuesday";
-        case 3:return "Wednesday";
-        case 4:return "Thursday";
-        case 5:return "Friday";
-        case 6: return "Saturday";
-        case 7:return "Sunday";
-        default:return "invalid day";
+switch (day) {
+        case 1:
+            return "Monday";
+        case 2:
+            return "Tuesday";
+        case 3:
+            return "Wednesday";
+        case 4:
+            return "Thursday";
+        case 5:
+            return "Friday";
+        case 6:
+            return "Saturday";
+        case 7:
+            return "Sunday";
+        default:
+            return "Invalid number.";
     }
-
 }
 
 // Counts the number of digits in the given integer
