@@ -21,13 +21,21 @@ int is_odd(int n) {
 // Counts the sum of integers between 1 and n
 // Example: range_sum(5) -> 15
 long range_sum(int n) {
-    // TODO
-}
+    long sum = 0;
+    for (int i = 1; i <= n; i++) {
+        sum += i;
+    }
+    return sum; 
+    }
 
 // Counts the sum of squares between 1 and n
 // Example: squared_sum(5) -> 55
 long squared_sum(int n) {
-    // TODO
+    long sum = 0;
+    for (int i = 1; i <= n; i++) {
+        sum += (long)i*i;
+    }
+    return sum;
 }
 
 // Divides n apples evenly for two persons
