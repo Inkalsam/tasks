@@ -51,7 +51,8 @@ double divide_apples(int n) {
 //   - area -> 12
 //   - perimeter -> 14
 void analyze_rectangle(int width, int height, long *area, long *perimeter) {
-    // TODO
+    *area = (long)width * height;
+    *perimeter = 2L * (width + height);
 }
 
 // Counts the steps in the following process:
