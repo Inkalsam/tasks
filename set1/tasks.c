@@ -94,7 +94,16 @@ char* week_day_name(int day) {
 //   - You can assume that n is nonnegative
 // Example: digit_count(123) -> 3
 int digit_count(int n) {
-    // TODO
+    if (n == 0) {
+    return 1;
+    } 
+    int count = 0;
+    while (n > 0) {
+    n = n / 10;
+    count ++;
+    }
+
+    return count;
 }
 
 // Calculates the Manhattan distance between two positions
