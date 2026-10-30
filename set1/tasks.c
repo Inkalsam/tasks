@@ -11,7 +11,11 @@ long calc_area(int width, int height) {
 // Example: is_odd(5) -> 1
 // Example: is_odd(6) -> 0
 int is_odd(int n) {
-    // TODO
+    if (n % 2 != 0) {
+        return 1;
+    } else {
+    return 0;
+}
 }
 
 // Counts the sum of integers between 1 and n
