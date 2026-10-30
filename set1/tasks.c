@@ -60,7 +60,16 @@ void analyze_rectangle(int width, int height, long *area, long *perimeter) {
 //   - If n is zero, stop
 // Example: count_steps(10) -> 5 (10 -> 5 -> 4 -> 2 -> 1 -> 0)
 int count_steps(int n) {
-    // TODO
+    int steps = 0;
+    while (n > 0) {
+        if (n % 2 == 0) {
+        n = n / 2;
+        } else {
+            n = n - 1; 
+        }
+        steps ++;
+    }
+    return steps;
 }
 
 // Returns the week day name in English
@@ -68,7 +77,17 @@ int count_steps(int n) {
 // Example: week_day_name(1) -> "Monday"
 // Example: week_day_name(2) -> "Tuesday"
 char* week_day_name(int day) {
-    // TODO
+    switch (day) {
+        case 1:return "Monday";
+        case 2:return "Tuesday";
+        case 3:return "Wednesday";
+        case 4:return "Thursday";
+        case 5:return "Friday";
+        case 6: return "Saturday";
+        case 7:return "Sunday";
+        default:return "invalid day";
+    }
+
 }
 
 // Counts the number of digits in the given integer
