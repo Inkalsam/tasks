@@ -10,3 +10,5 @@ void local_tests(void) {
         printf("%d is even\n", x);
     }
 }
+$ make
+$ ./main
