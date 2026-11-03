@@ -191,7 +191,21 @@ void convert_array(int *array, int n) {
 // Counts the number of distinct values in the array
 // Example: {1, 2, 1, 5, 2} -> 3
 int array_distinct_count(int *array, int n) {
-    // TODO
+    if(in <= 0) return 0;
+
+    int count = 0;
+    for(int i = 0; i < n; i ++) {
+        int j;
+        for (j = 0; j < i; j++) {
+            if array[i] == array[j] {
+                break;
+            }
+        }
+        if(j == i) {
+            count++;
+        }
+    }
+    return count;
 }
 
 // Counts the number of times a letter appears in a string
