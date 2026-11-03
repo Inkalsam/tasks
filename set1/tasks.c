@@ -127,7 +127,12 @@ int manhattan_distance(struct Position p1, struct Position p2) {
 //   - Return the result in simplest form
 // Example: f1 = {1, 4}, f2 = {1, 12} -> {1, 3}
 struct Fraction fraction_sum(struct Fraction f1, struct Fraction f2) {
-    // TODO
+    int num = f1.numerator * f2.denominator + f2.numerator * f1.denominator;
+    int den = f1.denominator * f2.denominator;
+    int g = gcd(num, den);
+
+    struct Fraction result = {num / g, den / g};
+    return result;
 }
 
 // Counts the number of even numbers in the array
