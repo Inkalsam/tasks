@@ -131,20 +131,42 @@ struct Fraction fraction_sum(struct Fraction f1, struct Fraction f2) {
 // Counts the number of even numbers in the array
 // Example: {2, 1, 2, 4, 5} -> 3
 int array_even_count(int *array, int n) {
-    // TODO
+    int maara = 0;
+    for (int i = 0; i < n; i++) {
+        if (array[i] % 2 == 0) {
+            maara += 1;
+    }
+}
+
+    return maara;
 }
 
 // Finds the minimum value in the array
 // Example: {2, 1, 2, 4, 5} -> 1
 int array_min_value(int *array, int n) {
-    // TODO
+    if(n <= 0) return 0;
+    int minimum = array[0];
+
+    for(int i = 1; i < n; i++) {
+        if (array[i] < minimum) {
+            minimum = array[i];
+        }
+    }
+    return minimum;
 }
 
 // Checks if the given array is sorted
 // Example: {1, 3, 2, 4} -> 0
 // Example: {1, 2, 2, 5} -> 1
 int array_is_sorted(int *array, int n) {
-    // TODO
+    if (n <= 1) return 1
+
+    for(int i = 0; i < n -1; i++) {
+        if (array[i] > array[i +1] {
+        return 0
+        }
+    }
+    return 1;
 }
 
 // Converts all array values to absolute values
