@@ -172,7 +172,13 @@ int array_is_sorted(int *array, int n) {
 // Converts all array values to absolute values
 // Example: {1, -1, -5, 0} -> {1, 1, 5, 0}
 void convert_array(int *array, int n) {
-    // TODO
+    if(n == 0) return;
+    
+    for(int i = 0; i < n; i++) {
+        if(array[i] < 0) {
+            array[i] = -array[i];
+        }
+    }   
 }
 
 // Counts the number of distinct values in the array
