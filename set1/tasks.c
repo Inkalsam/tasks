@@ -118,7 +118,9 @@ int digit_count(int n) {
 //   - Formula: |x1 - x2| + |y1 - y2| where |...| is absolute value
 // Example: p1 = {2, 3}, p2 = {1, 5} -> |2 - 1| + |3 - 5| = 3
 int manhattan_distance(struct Position p1, struct Position p2) {
-    // TODO
+    int dx = abs(p1.x - p2.x);
+    int dy = abs(p1.y - p2.y);
+    return dx + dy;
 }
 
 // Calculates the sum of two fractions
