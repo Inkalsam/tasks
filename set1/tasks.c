@@ -186,6 +186,7 @@ void convert_array(int *array, int n) {
             array[i] = -array[i];
         }
     }   
+    return i;
 }
 
 // Counts the number of distinct values in the array
@@ -211,7 +212,7 @@ int array_distinct_count(int *array, int n) {
 // Counts the number of times a letter appears in a string
 // Example: count_letters("aybabtu", 'a') -> 2
 int count_letters(char *string, char letter) {
-    if(string == null) return 0;
+    if(string == NULL) return 0;
 
     int count = 0;
     int i = 0;
@@ -230,7 +231,15 @@ int count_letters(char *string, char letter) {
 //   - There is a single space between each consecutive words
 // Example: count_words("all your base") -> 3
 int count_words(char *words) {
-    // TODO
+    if (words == NULL || words[0} == '\0') return 0;
+
+    int count = 1;
+    for(int i = 0; words[i] != '\0'; i++) {
+        if (words[i] == ' ') {
+            count ++;
+        }
+    }
+    return count;
 }
 
 // Finds the maximum word length in the given string
