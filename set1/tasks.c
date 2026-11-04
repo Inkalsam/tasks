@@ -314,8 +314,8 @@ return count;
 // Example: check_anagrams("abca", "aacb") -> 1
 // Example: check_anagrams("abca", "abcb") -> 0
 int check_anagrams(char *word1, char *word2) {
-    // TODO
-}
+    if (word1 == NULL || word2 == NULL) return 0;
+
 
 // Checks a University of Helsinki student number
 //   - The number consists of nine digits 0-9 and the first digit is 0
