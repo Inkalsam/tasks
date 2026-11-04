@@ -1,5 +1,9 @@
 #include "tasks.h"
 
+#include <stdlib.h>
+#include <string.h>
+
+
 // Calculates the area of a rectangle
 // Example: calc_area(2, 3) -> 6
 long calc_area(int width, int height) {
@@ -14,8 +18,8 @@ int is_odd(int n) {
     if (n % 2 != 0) {
         return 1;
     } else {
-    return 0;
-}
+        return 0;
+    }
 }
 
 // Counts the sum of integers between 1 and n
@@ -25,15 +29,15 @@ long range_sum(int n) {
     for (int i = 1; i <= n; i++) {
         sum += i;
     }
-    return sum; 
-    }
+    return sum;
+}
 
 // Counts the sum of squares between 1 and n
 // Example: squared_sum(5) -> 55
 long squared_sum(int n) {
     long sum = 0;
     for (int i = 1; i <= n; i++) {
-        sum += (long)i*i;
+        sum += (long)i * i;
     }
     return sum;
 }
@@ -64,11 +68,11 @@ int count_steps(int n) {
     int steps = 0;
     while (n > 0) {
         if (n % 2 == 0) {
-        n = n / 2;
+            n = n / 2;
         } else {
-            n = n - 1; 
+            n = n - 1;
         }
-        steps ++;
+        steps++;
     }
     return steps;
 }
@@ -77,24 +81,24 @@ int count_steps(int n) {
 //   - day is between 1 and 7
 // Example: week_day_name(1) -> "Monday"
 // Example: week_day_name(2) -> "Tuesday"
-char* week_day_name(int day) {
-switch (day) {
-    case 1:
-        return "Monday";
-    case 2:
-        return "Tuesday";
-    case 3:
-        return "Wednesday";
-    case 4:
-        return "Thursday";
-    case 5:
-        return "Friday";
-    case 6:
-        return "Saturday";
-    case 7:
-        return "Sunday";
-    default:
-        return "Invalid number.";
+char *week_day_name(int day) {
+    switch (day) {
+        case 1:
+            return "Monday";
+        case 2:
+            return "Tuesday";
+        case 3:
+            return "Wednesday";
+        case 4:
+            return "Thursday";
+        case 5:
+            return "Friday";
+        case 6:
+            return "Saturday";
+        case 7:
+            return "Sunday";
+        default:
+            return "Invalid number.";
     }
 }
 
@@ -103,12 +107,13 @@ switch (day) {
 // Example: digit_count(123) -> 3
 int digit_count(int n) {
     if (n == 0) {
-    return 1;
-    } 
+        return 1;
+    }
+
     int count = 0;
     while (n > 0) {
-    n = n / 10;
-    count ++;
+        n = n / 10;
+        count++;
     }
 
     return count;
@@ -127,8 +132,8 @@ int manhattan_distance(struct Position p1, struct Position p2) {
 //   - Return the result in simplest form
 // Example: f1 = {1, 4}, f2 = {1, 12} -> {1, 3}
 struct Fraction fraction_sum(struct Fraction f1, struct Fraction f2) {
-    int num = f1.numerator * f2.denominator + f2.numerator * f1.denominator;
-    int den = f1.denominator * f2.denominator;
+    int num = f1.a * f2.b + f2.a * f1.b;
+    int den = f1.b * f2.b;
     int g = gcd(num, den);
 
     struct Fraction result = {num / g, den / g};
@@ -142,8 +147,8 @@ int array_even_count(int *array, int n) {
     for (int i = 0; i < n; i++) {
         if (array[i] % 2 == 0) {
             maara += 1;
+        }
     }
-}
 
     return maara;
 }
@@ -151,10 +156,10 @@ int array_even_count(int *array, int n) {
 // Finds the minimum value in the array
 // Example: {2, 1, 2, 4, 5} -> 1
 int array_min_value(int *array, int n) {
-    if(n <= 0) return 0;
+    if (n <= 0) return 0;
     int minimum = array[0];
 
-    for(int i = 1; i < n; i++) {
+    for (int i = 1; i < n; i++) {
         if (array[i] < minimum) {
             minimum = array[i];
         }
@@ -166,11 +171,11 @@ int array_min_value(int *array, int n) {
 // Example: {1, 3, 2, 4} -> 0
 // Example: {1, 2, 2, 5} -> 1
 int array_is_sorted(int *array, int n) {
-    if (n <= 1) return 1
+    if (n <= 1) return 1;
 
-    for(int i = 0; i < n -1; i++) {
-        if (array[i] > array[i +1] {
-        return 0
+    for (int i = 0; i < n - 1; i++) {
+        if (array[i] > array[i + 1]) {
+            return 0;
         }
     }
     return 1;
@@ -179,30 +184,29 @@ int array_is_sorted(int *array, int n) {
 // Converts all array values to absolute values
 // Example: {1, -1, -5, 0} -> {1, 1, 5, 0}
 void convert_array(int *array, int n) {
-    if(n == 0) return;
-    
-    for(int i = 0; i < n; i++) {
-        if(array[i] < 0) {
+    if (n == 0) return;
+
+    for (int i = 0; i < n; i++) {
+        if (array[i] < 0) {
             array[i] = -array[i];
         }
-    }   
-    return i;
+    }
 }
 
 // Counts the number of distinct values in the array
 // Example: {1, 2, 1, 5, 2} -> 3
 int array_distinct_count(int *array, int n) {
-    if(in <= 0) return 0;
+    if (n <= 0) return 0;
 
     int count = 0;
-    for(int i = 0; i < n; i ++) {
+    for (int i = 0; i < n; i++) {
         int j;
         for (j = 0; j < i; j++) {
-            if array[i] == array[j] {
+            if (array[i] == array[j]) {
                 break;
             }
         }
-        if(j == i) {
+        if (j == i) {
             count++;
         }
     }
@@ -212,14 +216,14 @@ int array_distinct_count(int *array, int n) {
 // Counts the number of times a letter appears in a string
 // Example: count_letters("aybabtu", 'a') -> 2
 int count_letters(char *string, char letter) {
-    if(string == NULL) return 0;
+    if (string == NULL) return 0;
 
     int count = 0;
     int i = 0;
 
     while (string[i] != '\0') {
         if (string[i] == letter) {
-            count ++;
+            count++;
         }
         i++;
     }
@@ -231,12 +235,12 @@ int count_letters(char *string, char letter) {
 //   - There is a single space between each consecutive words
 // Example: count_words("all your base") -> 3
 int count_words(char *words) {
-    if (words == NULL || words[0} == '\0') return 0;
+    if (words == NULL || words[0] == '\0') return 0;
 
     int count = 1;
-    for(int i = 0; words[i] != '\0'; i++) {
+    for (int i = 0; words[i] != '\0'; i++) {
         if (words[i] == ' ') {
-            count ++;
+            count++;
         }
     }
     return count;
@@ -247,50 +251,46 @@ int count_words(char *words) {
 //   - There is a single space between each consecutive words
 // Example: count_words("all your base") -> 4
 int max_word_length(char *words) {
-    if (words == NULL || words[0] = '\0') return 0;
+    if (words == NULL || words[0] == '\0') return 0;
 
     int max = 0;
     int now = 0;
-    
+
     for (int i = 0; words[i] != '\0'; i++) {
         if (words[i] == ' ') {
             now = 0;
         } else {
             now++;
             if (now > max) {
-                max == now;
+                max = now;
             }
         }
     }
     return max;
 }
 
-            
-
-
-
 // Checks if the given word is a palindrome
 //   - The word consists of letters a..z
 // Example: is_palindrome("abba") -> 1
 // Example: is_palindrome("abca") -> 0
 int is_palindrome(char *word) {
-    if (words == NULL) return 0;
+    if (word == NULL) return 0;
 
     int left = 0;
     int right = 0;
-    
+
     while (word[right] != '\0') right++;
     right--;
 
     while (left < right) {
-        if (word[left] == word[right]) return 0;
+        if (word[left] != word[right]) {
+            return 0;
+        }
         left++;
         right--;
     }
     return 1;
 }
-        
-        
 
 // Counts the number of times any letter appears in a string
 // Example: count_letters("aybabtu", "au") -> 3
@@ -301,12 +301,12 @@ int count_letters_set(char *string, char *letters) {
     for (int i = 0; string[i] != '\0'; i++) {
         for (int j = 0; letters[j] != '\0'; j++) {
             if (string[i] == letters[j]) {
-                count ++;
+                count++;
                 break;
             }
         }
-    }    
-return count;
+    }
+    return count;
 }
 
 // Checks if two words are anagrams of each other
@@ -314,8 +314,8 @@ return count;
 // Example: check_anagrams("abca", "aacb") -> 1
 // Example: check_anagrams("abca", "abcb") -> 0
 int check_anagrams(char *word1, char *word2) {
-    if (word1 == NULL || word2 == NULL) return 0;
 
+}
 
 // Checks a University of Helsinki student number
 //   - The number consists of nine digits 0-9 and the first digit is 0
@@ -329,5 +329,4 @@ int check_anagrams(char *word1, char *word2) {
 //   - The distance to the next multiple of ten is 9
 //   - The checksum matches the last digit, so the number is valid
 int valid_student_number(char *number) {
-    // TODO
-}
+
