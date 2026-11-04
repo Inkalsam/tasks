@@ -274,12 +274,23 @@ int max_word_length(char *words) {
 // Example: is_palindrome("abba") -> 1
 // Example: is_palindrome("abca") -> 0
 int is_palindrome(char *word) {
-    if (words == NULL || words[0] == '\0') return 0;
+    if (words == NULL) return 0;
 
-    for(int i = 0; words[0] != '\0'; i++) {
-        word
-            
+    int left = 0;
+    int right = 0;
+    
+    while (word[right] != '\0') right++;
+    right--;
+
+    while (left < right) {
+        if (word[left] == word[right]) return 0;
+        left++;
+        right--;
+    }
+    return 1;
 }
+        
+        
 
 // Counts the number of times any letter appears in a string
 // Example: count_letters("aybabtu", "au") -> 3
