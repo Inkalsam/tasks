@@ -211,7 +211,18 @@ int array_distinct_count(int *array, int n) {
 // Counts the number of times a letter appears in a string
 // Example: count_letters("aybabtu", 'a') -> 2
 int count_letters(char *string, char letter) {
-    // TODO
+    if(string == null) return 0;
+
+    int count = 0;
+    int i = 0;
+
+    while (string[i] != '\0') {
+        if (string[i] == letter) {
+            count ++;
+        }
+        i++;
+    }
+    return count;
 }
 
 // Counts the number of words in the given string
