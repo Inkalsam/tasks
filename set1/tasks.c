@@ -295,7 +295,18 @@ int is_palindrome(char *word) {
 // Counts the number of times any letter appears in a string
 // Example: count_letters("aybabtu", "au") -> 3
 int count_letters_set(char *string, char *letters) {
-    // TODO
+    if (string == NULL || letters == NULL) return 0;
+
+    int count = 0;
+    for (int i = 0; string[i] != '\0'; i++) {
+        for (int j = 0; letters[j] != '\0'; j++) {
+            if (string[i] == letters[j]) {
+                count ++;
+                break;
+            }
+        }
+    }    
+return count;
 }
 
 // Checks if two words are anagrams of each other
