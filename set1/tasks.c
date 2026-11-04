@@ -247,8 +247,27 @@ int count_words(char *words) {
 //   - There is a single space between each consecutive words
 // Example: count_words("all your base") -> 4
 int max_word_length(char *words) {
-    // TODO
+    if (words == NULL || words[0] = '\0') return 0;
+
+    int max = 0;
+    int now = 0;
+    
+    for (int i = 0; words[i] != '\0'; i++) {
+        if (words[i] == ' ') {
+            now = 0;
+        } else {
+            now++;
+            if (now > max) {
+                max == now;
+            }
+        }
+    }
+    return max;
 }
+
+            
+
+
 
 // Checks if the given word is a palindrome
 //   - The word consists of letters a..z
