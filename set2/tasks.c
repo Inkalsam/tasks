@@ -4,7 +4,15 @@
 // Example: bit_count(123) -> 6
 //    123 = 1111011
 int bit_count(unsigned int x) {
-    // TODO
+    int count = 0;
+
+    while (x != 0) {
+        if (x & 1) {
+            count++;
+        }
+        x = x >> 1;
+    }
+    return count;
 }
 
 // Returns the parity of x
