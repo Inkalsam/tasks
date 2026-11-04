@@ -21,7 +21,17 @@ int bit_count(unsigned int x) {
 // Example: parity(123) -> 0
 //    123 = 1111011
 int parity(unsigned int x) {
-    // TODO
+    int count = 0;
+
+    while (x != 0) {
+        if (x & 1) {
+            count++;
+        }
+        x >>= 1;
+    }
+
+    return count % 2;
+
 }
 
 // Returns the bit at position pos
