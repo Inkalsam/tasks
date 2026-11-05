@@ -173,7 +173,19 @@ int is_power_of_two(unsigned int x) {
 //   1337 = 00000000000000000000010100111001
 //          ^^^^^^^^^^^^^^^^^^^^^ ^ ^^^ ^^
 int common_bit_count(unsigned int a, unsigned int b) {
-    // TODO
+    int same = 0;
+    int count = 0;
+
+    while (count < 32) {
+        if ((a & 1) == (b & 1)) {
+            same ++;
+        }
+        a >>= 1;
+        b >>= 1;
+        count++;
+    }
+    return same;
+
 }
 
 // Rotates all 32 bits of x one position to the left
