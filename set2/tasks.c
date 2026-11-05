@@ -106,7 +106,15 @@ unsigned int flip_bit(unsigned int x, int pos) {
 //   42 = 101010
 //        ^
 int highest_bit_pos(unsigned int x) {
-    // TODO
+    int pos = 0;
+    int count = 0;
+
+    while (x != 0) {
+        pos = count;
+        x >>= 1;
+        count++;
+    }
+    return pos;
 }
 
 // Returns the position of the lowest one bit
@@ -115,7 +123,16 @@ int highest_bit_pos(unsigned int x) {
 //   42 = 101010
 //            ^
 int lowest_bit_pos(unsigned int x) {
-    // TODO
+    int count = 0;
+
+    if (x == 0) return 0;
+
+    while ((x & 1) == 0) {
+        x >>= 1;
+        count++;
+    }
+    return count;
+
 }
 
 // Sets the lowest one bit to zero
