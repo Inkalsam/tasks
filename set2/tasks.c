@@ -41,7 +41,16 @@ int parity(unsigned int x) {
 //   123 = 1111011
 //             ^ ^
 int get_bit(unsigned int x, int pos) {
-    // TODO
+    int count = 0;
+
+    while (x != 0) {
+        if (count == pos){
+            return x & 1; 
+        }
+        x >>= 1;
+        count++;
+    }
+    return 0;
 }
 
 // Sets the bit at position pos to 1
@@ -49,7 +58,14 @@ int get_bit(unsigned int x, int pos) {
 //   123 = 1111011
 //   127 = 1111111
 unsigned int set_bit(unsigned int x, int pos) {
-    // TODO
+    int count = 0;
+    int copy = 1;
+
+    while (count < pos) {
+        copy <<= 1;
+        count++; 
+    }
+    return x | copy;
 }
 
 // Sets the bit at position pos to 0
@@ -57,7 +73,14 @@ unsigned int set_bit(unsigned int x, int pos) {
 //   123 = 1111011
 //   122 = 1111010
 unsigned int clear_bit(unsigned int x, int pos) {
-    // TODO
+    int count = 0;
+    int copy = 1;
+
+    while (count < pos) {
+        copy <<= 1;
+        count++;
+    }
+    return x & ~copy;
 }
 
 // Flips the bit at position pos
@@ -67,7 +90,14 @@ unsigned int clear_bit(unsigned int x, int pos) {
 //   122 = 1111010
 //   127 = 1111111
 unsigned int flip_bit(unsigned int x, int pos) {
-    // TODO
+    int count = 0;
+    int copy = 1;
+
+    while (count < pos) {
+        copy <<= 1;
+        count++;
+    }
+    return x ^ copy;
 }
 
 // Returns the position of the highest one bit
