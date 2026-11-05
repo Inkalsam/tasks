@@ -140,7 +140,16 @@ int lowest_bit_pos(unsigned int x) {
 //   42 = 101010
 //   40 = 101000
 unsigned int clear_lowest_bit(unsigned int x) {
-    // TODO
+    if (x == 0) return -1;
+
+    int mask = 1;
+    int copy = x;
+
+    while ((copy & 1) == 0) {
+        copy >>= 1;
+        mask <<= 1;
+    }
+    return x & ~mask;
 }
 
 // Returns 1 if x is a power of two, otherwise returns 0
