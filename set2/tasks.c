@@ -156,7 +156,15 @@ unsigned int clear_lowest_bit(unsigned int x) {
 // Example: is_power_of_two(16) -> 1
 // Example: is_power_of_two(17) -> 0
 int is_power_of_two(unsigned int x) {
-    // TODO
+    int count = 0;
+
+    while (x != 0) {
+        if ((x & 1) == 1) {
+            count++;
+        }
+        x >>= 1;
+    }
+    return count == 1;
 }
 
 // Counts the number of bit positions where a and b have the same bit
