@@ -194,7 +194,8 @@ int common_bit_count(unsigned int a, unsigned int b) {
 //   3333333333 = 11000110101011101010000101010101
 //   2371699371 = 10001101010111010100001010101011
 unsigned int rotate_left(unsigned int x) {
-    // TODO
+    return (x << 1 | x >> 31);
+
 }
 
 // Rotates all 32 bits of x one position to the right
@@ -203,7 +204,7 @@ unsigned int rotate_left(unsigned int x) {
 //   3333333333 = 11000110101011101010000101010101
 //   3814150314 = 11100011010101110101000010101010
 unsigned int rotate_right(unsigned int x) {
-    // TODO
+    return (x >> 1 | x << 31);
 }
 
 // Flips all 32 bits of x
@@ -211,7 +212,7 @@ unsigned int rotate_right(unsigned int x) {
 //         1337 = 00000000000000000000010100111001
 //   4294965958 = 11111111111111111111101011000110
 unsigned int flip_all_bits(unsigned int x) {
-    // TODO
+    return ~x;
 }
 
 // Swaps every pair of adjacent bits
@@ -219,7 +220,7 @@ unsigned int flip_all_bits(unsigned int x) {
 //   1337 = 010100111001
 //   2614 = 101000110110
 unsigned int swap_adjacent_bits(unsigned int x) {
-    // TODO
+
 }
 
 // Reverses the order of all bits of x
@@ -227,7 +228,12 @@ unsigned int swap_adjacent_bits(unsigned int x) {
 //         1337 = 00000000000000000000010100111001
 //   2627731456 = 10011100101000000000000000000000
 unsigned int reverse_bits(unsigned int x) {
-    // TODO
+    unsigned int result = 0;
+    for (int i = 0; i < 32; i++) {
+        result = (result << 1) | (x & 1);
+        x >>= 1;
+    }
+    return result;
 }
 
 // Returns 1 ^ 2 ^ 3 ^ ... ^ n.
