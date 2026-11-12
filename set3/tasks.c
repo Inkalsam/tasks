@@ -1,30 +1,65 @@
 #include "tasks.h"
+#include <stdlib.h>
+#include <string.h>
 
 // Counts the number of times pattern occurs in string
 // Example: count("aybabtu", "bab") -> 1
 // Example: count("aaaaaa", "aa") -> 5
 int count(char *string, char *pattern) {
-    // TODO
+    int a = strlen(string);
+    int b = strlen(pattern);
+    int result = 0;
+    
+    if (b == 0 || b > a)
+        return 0;
+
+    for (int i = 0; i <= a - b; i++ ) {
+        if (strncmp(string + i, pattern, b) == 0) {
+            result++;
+        }
+    }
+    return result;
 }
 
 // Checks if string starts with prefix
 // Example: starts_with("aybabtu", "ayb") -> 1
 // Example: starts_with("aybabtu", "lol") -> 0
 int starts_with(char *string, char *prefix) {
-    // TODO
+    int a = strlen(string);
+    int b = strlen(prefix);
+
+    if (b > a) return 0;
+
+    return strncmp(string, prefix, b) == 0;
 }
 
 // Checks if string ends with suffix
 // Example: ends_with("aybabtu", "btu") -> 1
 // Example: ends_with("aybabtu", "lol") -> 0
 int ends_with(char *string, char *suffix) {
-    // TODO
+    int a = strlen(string);
+    int b = strlen(suffix);
+
+    if (b > a) return 0;
+
+    return strncmp(string + (a - b), suffix, b) == 0;
 }
 
 // Concatenates the strings in the array into a single string
 // Example: {"apina", "banaani", "cembalo"} -> "apinabanaanicembalo"
 char* concat(char **array, int n) {
-    // TODO
+    int total = 0;
+    for (int i = 0; i < n; i++) {
+        total += strlen(array[i]);
+    }
+    char *result = malloc(total + 1);
+    if (result == NULL) return NULL;
+
+    result[0] = '\0';
+    for (int i = 0; i < n; i++) {
+        strcat (result, array[i]);
+    }
+    return result;
 }
 
 // Returns the first position where pattern occurs in string
@@ -32,13 +67,33 @@ char* concat(char **array, int n) {
 // Example: find("aybabtu", "bab") -> 2
 // Example: find("aybabtu", "lol") -> -1
 int find(char *string, char *pattern) {
-    // TODO
+    int a = strlen(string);
+    int b = strlen(pattern);
+
+    if (b > a) return -1;
+
+    for (int i = 0; i <= a - b; i++) {
+        if (strncmp (string + i, pattern, b) == 0) {
+            return i;
+        }
+    }
+    return -1;
 }
+
 
 // Creates a string that repeats pattern n times
 // Example: repeat("abc", 4) -> "abcabcabcabc"
 char* repeat(char *pattern, int n) {
-    // TODO
+    int len = strlen(pattern);
+
+    char *result = malloc(len * n + 1);
+    if (result == NULL) return NULL;
+
+    result[0] = '\0';
+    for (int i = 0; i < n; i++) {
+        strcat(result, pattern);
+    }
+    return result;
 }
 
 // Removes spaces around the string
