@@ -99,21 +99,61 @@ char* repeat(char *pattern, int n) {
 // Removes spaces around the string
 // Example: trim(" aybabtu   ") -> "aybabtu"
 char* trim(char *string) {
-    // TODO
+    if (string == NULL) return NULL;
+
+    const char *start = string;
+    while (isspace((unsigned char)*start)) start++;
+
+    const char *end = string + strlen(string);
+    while (end > start && isspace((unsigned char)end[-1])) end--;
+
+    size_t length = end - start;
+    char *result = malloc(length + 1);
+    if (result == NULL) return NULL;
+
+    memcpy(result, start, length);
+    result[length] = '\0';
+    return result;
 }
+
 
 // Replaces characters a-z with A-Z in string
 // Example: upper("aybabtu") -> "AYBABTU"
 // Example: upper("AyBaBtU") -> "AYBABTU"
 char* upper(char *string) {
-    // TODO
+    if (string == NULL) return NULL;
+
+    size_t length = strlen(string);
+    char *result = malloc(length + 1);
+    if (result == NULL) return NULL;
+
+    memcpy(result, string, length + 1);
+    for (size_t i = 0; result[i] != '\0'; i++) {
+        if (result[i] >= 'a' && result[i] <= 'z') {
+            result[i] = result[i] - 'a' + 'A';
+        }
+    }
+
+    return result;
 }
 
 // Replaces characters A-Z with a-z in string
 // Example: upper("AYBABTU") -> "aybabtu"
 // Example: upper("AyBaBtU") -> "aybabtu"
 char* lower(char *string) {
-    // TODO
+    if (string == NULL) return NULL;
+
+    size_t length = strlen(string);
+    char *result = malloc(length + 1);
+    if (result == NULL) return NULL;
+
+    memcpy (result, string, length +1);
+    for (size_t i = 0; string[i] != '\0'; i++) {
+        if (result[i] >= 'A' && result[i] <= 'Z') {
+            result[i] = result[i] - 'A' + 'a';
+        }
+    }
+    return result;
 }
 
 // Returns a substring from the string
@@ -122,7 +162,25 @@ char* lower(char *string) {
 // Example: substr("aybabtu", 10, 3) -> ""
 // Example: substr("aybabtu", 2, 10) -> "babtu"
 char* substr(char *string, int start, int length) {
-    // TODO
+    if (string == NULL) return NULL;
+
+    size_t source_length = strlen(string);
+    const char *slice = string;
+    size_t slice_length = 0;
+
+    if (start >= 0 && length > 0 && (size_t)start < source_length) {
+        slice = string + start;
+        size_t available = source_length - (size_t)start;
+        slice_length = (size_t)length < available ? (size_t)length : available;
+    }
+
+    char *result = malloc(slice_length + 1);
+    if (result == NULL) return NULL;
+
+    memcpy(result, slice, slice_length);
+    result[slice_length] = '\0';
+    return result;
+
 }
 
 // Replaces all occurrences of old with new in string
@@ -130,7 +188,61 @@ char* substr(char *string, int start, int length) {
 // Example: replace("aybabtu", "bab", "lol") -> "ayloltu"
 // Example: replace("aa", "a", "aa") -> "aaaa"
 char* replace(char *string, char *old, char *new) {
-    // TODO
+    if (string == NULL || old == NULL || new == NULL) return NULL;
+
+    size_t source_length = strlen(string);
+    size_t old_len = strlen(old);
+    size_t new_len = strlen(new);
+    if (source_length == SIZE_MAX) return NULL;
+
+    if (old_len == 0) {
+        char *result = malloc(source_length + 1);
+        if (result == NULL) return NULL;
+        memcpy(result, string, source_length + 1);
+        return result;
+    }
+
+    size_t matches = 0;
+    for (size_t i = 0; i < source_length;) {
+        if (old_len <= source_length - i &&
+            strncmp(string + i, old, old_len) == 0) {
+            matches++;
+            i += old_len;
+        } else {
+            i++;
+        }
+    }
+
+    size_t output_length;
+    if (new_len >= old_len) {
+        size_t growth = new_len - old_len;
+        if (growth != 0 &&
+            matches > (SIZE_MAX - source_length - 1) / growth) {
+            return NULL;
+        }
+        output_length = source_length + matches * growth;
+    } else {
+        output_length = source_length - matches * (old_len - new_len);
+    }
+
+    char *result = malloc(output_length + 1);
+    if (result == NULL) return NULL;
+
+    size_t src = 0;
+    size_t dst = 0;
+    while (src < source_length) {
+        if (old_len <= source_length - src &&
+            strncmp(string + src, old, old_len) == 0) {
+            memcpy(result + dst, new, new_len);
+            src += old_len;
+            dst += new_len;
+        } else {
+            result[dst++] = string[src++];
+        }
+    }
+
+    result[dst] = '\0';
+    return result;
 }
 
 // Applies ROT13 transformation to string
