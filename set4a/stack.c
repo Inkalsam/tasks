@@ -2,29 +2,53 @@
 #include "stack.h"
 
 struct Stack {
-    // TODO
+    int *values;
+    int size;
+    int capacity;
 };
 
 Stack* stack_create(void) {
-    // TODO
+    Stack *stack = malloc(sizeof(Stack));
+    if (stack == NULL) return NULL;
+
+    stack->values = malloc(4 * sizeof(int));
+    if (stack->values == NULL) {
+        free(stack);
+        return NULL;
+    }
+
+    stack->size = 0;
+    stack->capacity = 4;
+    return stack;
+
 }
 
 void stack_push(Stack *stack, int value) {
-    // TODO
+    if (stack->size == stack->capacity) {
+        int new_capacity = stack->capacity * 2;
+        int *new_values = realloc(stack->values,
+                                  new_capacity * sizeof(int));
+        if (new_values == NULL) return;
+        stack->values = new_values;
+        stack->capacity = new_capacity;
+    }
+    stack->values[stack->size] = value;
+    stack->size++;
 }
 
 void stack_pop(Stack *stack) {
-    // TODO
+    stack->size--;
 }
 
 int stack_top(Stack *stack) {
-    // TODO
+    return stack->values[stack->size - 1];
 }
 
 int stack_size(Stack *stack) {
-    // TODO
+    return stack->size;
 }
 
 void stack_free(Stack *stack) {
-    // TODO
+    free(stack->values);
+    free(stack);
 }
